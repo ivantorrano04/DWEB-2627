@@ -34,4 +34,21 @@ public class PokemonController {
         return "informacion";
     }
 
+    @GetMapping("/pokemon/tabla")
+    public String listadoTabla(Model model) {
+        model.addAttribute("pokemons", pokemonService.findRandomList(10));
+        model.addAttribute("titulo", "Pokémon en formato tabla");
+        model.addAttribute("fechaHora", LocalDateTime.now());
+
+        return "listado-tabla";
+    }
+
+    @GetMapping("/pokemon/galeria")
+    public String galeriaPokemon(Model model) {
+        model.addAttribute("pokemons", pokemonService.findRandomList(12));
+        model.addAttribute("titulo", "Galería Pokémon");
+
+        return "galeria-pokemon";
+    }
+
 }
